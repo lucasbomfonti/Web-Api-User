@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  uds_user_api:
+    image: uds-user-api
+    build:
+      context: .
+      dockerfile: WebApplication1/Dockerfile
+
+ 
+ 

@@ -57,6 +57,31 @@ namespace WindowsFormsApp1
             }
         }
 
+        public static async void UpdateUsuario(string URI, Usuario usuario)
+        {
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.PutAsJsonAsync(URI + "/" + usuario.UsuarioId, usuario);
+                if (!responseMessage.IsSuccessStatusCode)
+                {
+                    throw new Exception("Falha ao atualizar o usuário: " + responseMessage);
+                }
+            }
+        }
+
+        public static async void DeleteUsuario(string URI, int codigoUsuario)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URI);
+                HttpResponseMessage responseMessage = await
+                    client.DeleteAsync(String.Format("{0}/{1}", URI, codigoUsuario));
+                if (!responseMessage.IsSuccessStatusCode)
+                {
+                    throw new Exception("Falha ao excluir o usuário :" + responseMessage.StatusCode);
+                }
+            }
+        }
     }
 }
  
