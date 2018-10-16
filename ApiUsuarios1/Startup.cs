@@ -1,16 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
-using ApiUsuarios1.Model;
+﻿using ApiUsuarios1.Model;
 using ApiUsuarios1.Repositorio;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ApiUsuarios1.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace ApiUsuarios1
@@ -29,36 +25,9 @@ namespace ApiUsuarios1
         {
             services.AddDbContext<UsuarioDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<UsuarioService.IUsuarioService, UsuarioService>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "lucas.bomfonti@uds.com.br",
-                    ValidAudience = "lucas.bomfonti@uds.com.br",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
-                };
-
-                options.Events = new JwtBearerEvents
-                {
-                    OnAuthenticationFailed = context =>
-                    {
-                        Console.WriteLine("Token inválido..." + context.Exception.Message);
-                        return Task.CompletedTask;
-                    },
-                    OnTokenValidated = context =>
-                    {
-                        Console.WriteLine("token Válido..." + context.SecurityToken);
-                        return Task.CompletedTask;
-                    }
-                };
-            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -80,8 +49,7 @@ namespace ApiUsuarios1
             {
                 app.UseDeveloperExceptionPage();
             }
-          app.UseHttpsRedirection();
-            app.UseAuthentication(); 
+          app.UseHttpsRedirection();        
             app.UseMvc();
 
             app.UseSwagger();

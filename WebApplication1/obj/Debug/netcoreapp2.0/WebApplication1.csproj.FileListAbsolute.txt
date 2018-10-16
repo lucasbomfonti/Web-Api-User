@@ -1,11 +1,10 @@
-C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csprojAssemblyReference.cache
-C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csproj.CoreCompileInputs.cache
-C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfoInputs.cache
-C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfo.cs
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.deps.json
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runtimeconfig.json
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runtimeconfig.dev.json
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.dll
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.pdb
+C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csproj.CoreCompileInputs.cache
+C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfoInputs.cache
+C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfo.cs
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.dll
 C:\Users\uds\source\repos\ApiUsuarios1\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.pdb

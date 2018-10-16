@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using ApiUsuarios1.Model;
-using ApiUsuarios1.Repositorio;
-using Microsoft.AspNetCore.Authorization;
+using ApiUsuarios1.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiUsuarios1.Controllers
 {
     [Route("api/[Controller]")]
-    [Authorize()]
     public class UsuariosController : Controller
     {
-        private readonly IUsuarioRepository _usuarioRepository;
-        public UsuariosController(IUsuarioRepository usuarioRepo)
+        private readonly UsuarioService.IUsuarioService _usuarioRepository;
+        public UsuariosController(UsuarioService.IUsuarioService usuarioRepo)
         {
             _usuarioRepository = usuarioRepo;
         }
@@ -20,7 +17,7 @@ namespace ApiUsuarios1.Controllers
         [HttpGet]
         public IEnumerable<Usuario> GetAll()
         {
-            return _usuarioRepository.GetAll();
+            return _usuarioRepository.ListUsuarios();
         }
 
         [HttpGet("{id}", Name = "GetUsuario")]
@@ -37,9 +34,8 @@ namespace ApiUsuarios1.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Usuario usuario)
         {
-            if (usuario == null)
-                return BadRequest();
-            _usuarioRepository.Add(usuario);
+
+            _usuarioRepository.CreateUsuario(usuario);
             return CreatedAtRoute("getUsuario", new {id = usuario.UsuarioId}, usuario);
 
         }
